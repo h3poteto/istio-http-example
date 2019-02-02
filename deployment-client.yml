@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: client-0
-  namespace: playground
+  namespace: istio-http-example
   labels:
     app: client-0
 spec:

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: playground
+  name: istio-http-example
   labels:
-    name: playground
+    name: istio-http-example
     istio-injection: enabled

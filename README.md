@@ -65,7 +65,7 @@ $ kubectl apply -f deployment-client.yml
 If istio auto injection is running, you can find 2 containers per pod.
 
 ```bash
-$ kubectl get pods -n playground
+$ kubectl get pods -n istio-http-example
 NAME                        READY   STATUS    RESTARTS   AGE
 backend-0-5b4d8b696-2q5d7   2/2     Running   0          1m
 backend-0-5b4d8b696-r8cvn   2/2     Running   0          1m
@@ -75,7 +75,7 @@ client-0-796bb44b64-m5rq4   2/2     Running   1          43s
 You can confirm http connection.
 
 ```bash
-$ kubectl logs -f client-0-796bb44b64-m5rq4 -n playground -c client
+$ kubectl logs -f client-0-796bb44b64-m5rq4 -n istio-http-example -c client
 Hello, World!
 Hello, World!
 Hello, World!
