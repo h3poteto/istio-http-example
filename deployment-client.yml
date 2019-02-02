@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-0
+  namespace: playground
+  labels:
+    app: client-0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+      version: "0"
+  template:
+    metadata:
+      labels:
+        app: client
+        version: "0"
+    spec:
+      containers:
+        - name: client
+          image: h3poteto/playground-echo-client:master
+          imagePullPolicy: Always
+          env:
+            - name: SERVER_HOST
+              value: "backend"
+            - name: SERVER_PORT
+              value: "9090"
+
