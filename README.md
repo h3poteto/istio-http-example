@@ -9,7 +9,7 @@ You have to prepare kubernetes cluster. I'm using EKS on AWS.
 ```bash
 $ curl -L https://git.io/getLatestIstio | sh -
 $ cd istio-1.*
-$ sudo cp bin/istio /usr/local/bin/
+$ sudo cp bin/istioctl /usr/local/bin/
 ```
 
 ### helm
