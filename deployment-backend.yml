@@ -6,7 +6,7 @@ metadata:
   labels:
     app: backend-0
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: backend
@@ -18,12 +18,46 @@ spec:
         version: "0"
     spec:
       containers:
-      - name: echo
-        image: h3poteto/playground-echo-go:master
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
-          name: http
-        env:
-        - name: PORT
-          value: "8080"
+        - name: echo
+          image: h3poteto/playground-echo-go:master
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: PORT
+              value: "8080"
+            - name: VERSION
+              value: "0"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-1
+  namespace: istio-http-example
+  labels:
+    app: backend-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+      version: "1"
+  template:
+    metadata:
+      labels:
+        app: backend
+        version: "1"
+    spec:
+      containers:
+        - name: echo
+          image: h3poteto/playground-echo-go:master
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: PORT
+              value: "8080"
+            - name: VERSION
+              value: "1"
